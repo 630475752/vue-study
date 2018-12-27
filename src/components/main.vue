@@ -3,11 +3,14 @@
 	<el-container style=" border: 1px solid #eee;min-width: 1200px;" id="layout-main-div">		  
 	<el-header style="text-align: right; font-size: 12px;padding: 0;">
 	  <span class="div-logo"><img src="../assets/logo.png" height="60px" width="200px"/></span>
-	  <span style="float: left;margin-top: 10px;">
-		  <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+	  <span style="float: left;">
+		  <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
 		  <el-radio-button :label="false">展开</el-radio-button>
 		  <el-radio-button :label="true">收起</el-radio-button>
-		  </el-radio-group>
+		  </el-radio-group>-->
+		  <el-row>
+		   	<img src="../../static/image/应用管理.png" height="30" @click="menuClick"/>
+		  </el-row>
 	  </span>
       <el-dropdown>
         <i class="el-icon-setting" style="margin-right: 15px"></i>
@@ -110,6 +113,9 @@
 			
 	},
 	methods: {
+	  menuClick(){
+			this.isCollapse=!this.isCollapse;
+	  },
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
       },
