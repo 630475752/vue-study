@@ -2,16 +2,15 @@
 	<div>
 	<el-container style=" border: 1px solid #eee;min-width: 1200px;" id="layout-main-div">		  
 	<el-header style="text-align: right; font-size: 12px;padding: 0;">
-	  <span class="div-logo"><img src="../assets/logo.png" height="60px" width="200px"/></span>
-	  <span style="float: left;">
-		  <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-		  <el-radio-button :label="false">展开</el-radio-button>
-		  <el-radio-button :label="true">收起</el-radio-button>
-		  </el-radio-group>-->
-		  <el-row>
-		   	<img src="../../static/image/应用管理.png" height="30" @click="menuClick"/>
-		  </el-row>
+	  <span style="float: left; width: 65px;height: 60px;text-align: center;vertical-align: middle;">
+			
+		<img  v-bind:src="menuImgUrl" width="40" height="40" @click="menuClick" style="margin-top: 10px;"/>
+			
 	  </span>
+	  <span class="div-logo">
+	  	<img src="../assets/logo.png" height="40px" style="margin-top: 10px;margin-left: 10px;"/> 
+	  </span>
+
       <el-dropdown>
         <i class="el-icon-setting" style="margin-right: 15px"></i>
         <el-dropdown-menu slot="dropdown">
@@ -27,6 +26,7 @@
 	<el-container class="el-menu-demo-height">
  
 	<el-menu default-active="1-4-1" class="el-menu-vertical-demo el-menu-demo-height "  @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+		
 	  <el-submenu index="1">
 		<template slot="title">
 		  <i class="el-icon-location"></i>
@@ -71,8 +71,10 @@
 <style>
 	.div-logo{
 		float: left;
-		width: 200px;
-		text-align: center
+		width: 135px;
+		height: 60px;
+		text-align: left;
+		background-color: #F0F9EB;
 	}
   .el-header {
     background-color: #B3C0D1;
@@ -104,7 +106,8 @@
       };
       return {
         tableData: Array(20).fill(item),
-		isCollapse: true
+		isCollapse: false,
+		menuImgUrl: "../../static/image/menu-unfold.png"
       }
     },
 	mounted: function () {
@@ -114,7 +117,13 @@
 	},
 	methods: {
 	  menuClick(){
+	  	
 			this.isCollapse=!this.isCollapse;
+			if(this.isCollapse){
+				this.menuImgUrl= "../../static/image/menu-fold.png"
+			}else{
+				this.menuImgUrl= "../../static/image/menu-unfold.png"
+			}
 	  },
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
