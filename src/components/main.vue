@@ -2,10 +2,8 @@
 	<div>
 	<el-container style=" border: 1px solid #eee;min-width: 1200px;" id="layout-main-div">		  
 	<el-header style="text-align: right; font-size: 12px;padding: 0;">
-	  <span style="float: left; width: 65px;height: 60px;text-align: center;vertical-align: middle;">
-			
-		<img  v-bind:src="menuImgUrl" width="40" height="40" @click="menuClick" style="margin-top: 10px;"/>
-			
+	  <span class="menu-span"  v-bind:class="{ 'menu-span-focus': isFocus }">
+		<i class="icon iconfont icon-menu-wh"  v-bind:class="{ 'icon-menu-focus': isFocus ,'icon-menu-fold ' : isCollapse, 'icon-menu-unfold ': !isCollapse}"  @click="menuClick" @mouseenter="enter" @mouseleave="leave"></i>		
 	  </span>
 	  <span class="div-logo">
 	  	<img src="../assets/logo.png" height="40px" style="margin-top: 10px;margin-left: 10px;"/> 
@@ -68,7 +66,8 @@
 </div>
 </template>
 
-<style>
+<style scoped="scoped">
+	@import '../../static/css/self-icon/iconfont.css';
 	.div-logo{
 		float: left;
 		width: 135px;
@@ -76,6 +75,13 @@
 		text-align: left;
 		background-color: #F0F9EB;
 	}
+   .icon-menu-wh{
+   	  font-size: 24px;
+   }
+   
+   .icon-menu-focus{
+   	  font-size: 28px;
+   }
   .el-header {
     background-color: #B3C0D1;
     color: #333;
@@ -93,6 +99,16 @@
 	height: 100%;
 	text-align: left;
   }
+  .menu-span{
+  	float: left; 
+  	width: 65px;
+  	height: 60px;
+  	text-align: center;
+  	vertical-align: middle;
+  }
+  .menu-span-focus{
+  	background-color:#CBD3DE ;
+  }
 </style>
 
 <script>
@@ -107,7 +123,7 @@
       return {
         tableData: Array(20).fill(item),
 		isCollapse: false,
-		menuImgUrl: "../../static/image/menu-unfold.png"
+		isFocus: false
       }
     },
 	mounted: function () {
@@ -117,13 +133,7 @@
 	},
 	methods: {
 	  menuClick(){
-	  	
-			this.isCollapse=!this.isCollapse;
-			if(this.isCollapse){
-				this.menuImgUrl= "../../static/image/menu-fold.png"
-			}else{
-				this.menuImgUrl= "../../static/image/menu-unfold.png"
-			}
+		this.isCollapse=!this.isCollapse;
 	  },
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
@@ -133,6 +143,12 @@
       },
 	  handleClick(path) {
 		this.$router.push(path)
+	  },
+	  enter(){
+	  	this.isFocus= true;
+	  },
+	  leave(){
+	  	this.isFocus= false;
 	  }
     }
   };
