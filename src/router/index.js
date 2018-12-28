@@ -9,29 +9,34 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+		{
+			path: '/login',
+			name: 'login',
+			component: login,
+		},
     {
       path: '/',
       name: 'layout-main',
       component: main,
+			meta:{
+			  requireAuth: true	
+			},
 			children: [
 				{
 					path: 'HelloWorld',
 					name: 'HelloWorld',
-					component: HelloWorld
-					
+					component: HelloWorld,
 				},
 				{
 					path: 'table',
 					name: 'table',
-					component: table
-					
+					component: table,
+					meta:{
+						requireAuth: true	
+					},
 				}
 			]
-    },
-		{
-			path: '/',
-			name: 'login',
-			component: login,
-		}
+    }
+		
   ]
 })
