@@ -7,6 +7,7 @@ import App from './App.vue';
 import router from './router'
 import axios from 'axios';
 import Vuex from 'vuex';
+import {setCookie,getCookie}from './js/cookieUtil'
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
@@ -39,6 +40,17 @@ var store = new Vuex.Store({
     },
   }
 });
+
+let cookieToken=() => { 
+		store.state.token = sessionStorage.getItem('token');//获取本地存储的token
+    if (store.state.token === "" || store.state.token === null) { 
+    		let token = getCookie("token");
+    		if(token !== "" && token !== null){
+    			sessionStorage.setItem('token',token);//获取本地存储的token
+    		}
+    }
+};
+cookieToken();
 
 router.beforeEach((to, from, next) => {
   //iView.LoadingBar.start();//loadong 效果
