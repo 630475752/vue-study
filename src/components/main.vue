@@ -2,11 +2,12 @@
 	<div>
 	<el-container style=" border: 1px solid #eee;min-width: 1200px;" id="layout-main-div">		  
 	<el-header style="text-align: right; font-size: 12px;padding: 0;">
-	  <span class="menu-span"  v-bind:class="{ 'menu-span-focus': isFocus }">
-		<i class="icon iconfont icon-menu-wh"  v-bind:class="{ 'icon-menu-focus': isFocus ,'icon-menu-fold ' : isCollapse, 'icon-menu-unfold ': !isCollapse}"  @click="menuClick" @mouseenter="enter" @mouseleave="leave"></i>		
-	  </span>
+	  
 	  <span class="div-logo">
 	  	<img src="../assets/logo.png" height="40px" style="margin-top: 10px;margin-left: 10px;"/> 
+	  </span>
+	  <span class="menu-span"  v-bind:class="{ 'menu-span-focus': isFocus }">
+		<i class="icon iconfont icon-menu-wh"  v-bind:class="{ 'icon-menu-focus': isFocus ,'icon-menu-fold ' : isCollapse, 'icon-menu-unfold ': !isCollapse}"  @click="menuClick" @mouseenter="enter" @mouseleave="leave"></i>		
 	  </span>
 
       <el-dropdown>
@@ -70,7 +71,7 @@
 	@import '../../static/css/self-icon/iconfont.css';
 	.div-logo{
 		float: left;
-		width: 135px;
+		width: 200px;
 		height: 60px;
 		text-align: left;
 		background-color: #F0F9EB;
