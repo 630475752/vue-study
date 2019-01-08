@@ -83,7 +83,8 @@ export default {
 		 total: 0
       }
     },mounted: function () {
-		getUserList({page:this.currentPage,pageSize:this.pageSize}).then(data => {
+		let params={currentPage:this.currentPage,pageSize:this.pageSize,page:1};
+		getUserList(params).then(data => {
 			let { users, total, pageSize ,currentPage} = data;
 			
 			this.tableData2=users;

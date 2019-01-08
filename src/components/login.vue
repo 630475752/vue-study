@@ -53,6 +53,7 @@
             //_this.$router.replace('/table');
             this.logining = true;
             //NProgress.start();
+						sessionStorage.setItem('token',"");
             var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
             requestLogin(loginParams).then(data => {
               this.logining = false;
@@ -63,9 +64,10 @@
                   message: msg,
                   type: 'error'
                 });
+				
               } else {
                 sessionStorage.setItem('user', JSON.stringify(user));
-				sessionStorage.setItem('token',token);
+								sessionStorage.setItem('token',token);
                 this.$router.push({ path: '/' });
               }
             });

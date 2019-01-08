@@ -3,7 +3,7 @@
 	<el-container style=" border: 1px solid #eee;min-width: 1200px;" id="layout-main-div">		  
 	<el-header style="text-align: right; font-size: 12px;padding: 0;">
 	  
-	  <span class="div-logo">
+	  <span class="div-logo" v-bind:class="{ 'logo-show': isCollapse }">
 	  	<img src="../assets/logo.png" height="40px" style="margin-top: 10px;margin-left: 10px;"/> 
 	  </span>
 	  <span class="menu-span"  v-bind:class="{ 'menu-span-focus': isFocus }">
@@ -75,6 +75,10 @@
 		height: 60px;
 		text-align: left;
 		background-color: #F0F9EB;
+	}
+	
+	.logo-show{
+		display: none;
 	}
    .icon-menu-wh{
    	  font-size: 24px;
